@@ -4,14 +4,13 @@ import Output from './Components/Output';
 import Buttons from './Components/Buttons';
 import { useState } from 'react';
 
-
-
 function App() {
 
   const [inputA, setInputA] = useState('');
   const [inputB, setInputB] = useState('');
 
   const [output, setOutput] = useState('');
+
 
   const inputAHandler = (event) => {
     setInputA(event.target.value);
@@ -38,7 +37,7 @@ function App() {
       <Header />
       <Input inputAHandler={inputAHandler} inputBHandler={inputBHandler} />
       <Buttons operacion={operacion} />
-      <Output output={output} />
+      <Output output={output}/>
     </div>
   );
 }
