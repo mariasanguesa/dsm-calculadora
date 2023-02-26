@@ -1,11 +1,15 @@
 import Header from './Components/UI/Header';
+import Input from './Components/Input';
+import Output from './Components/Output';
+import Buttons from './Components/Buttons';
+
 function App() {
   return (
     <div>
       <Header />
-      <p>
-        Hola
-      </p>
+      <Input />
+      <Buttons />
+      <Output />
     </div>
   );
 }
