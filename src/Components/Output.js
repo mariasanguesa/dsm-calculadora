@@ -1,12 +1,12 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
-const Output = () => {
+const Output = (props) => {
     return (
         <Container>
             <hr></hr>
             <Row>
-                <p>Resultado: </p>
+                <p>Resultado: {props.output}</p>
             </Row>
         </Container>
     )

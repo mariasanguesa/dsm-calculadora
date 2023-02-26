@@ -3,22 +3,27 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
-const Buttons = () => {
+const Buttons = (props) => {
+
+    const operacionHandler = (event) => {
+        props.operacion(event.target.value);
+    }
+
     return (
         <Container>
             <hr></hr>
             <Row>
                 <Col>
-                    <Button>+</Button>
+                    <Button onClick={operacionHandler} value={'+'}>+</Button>
                 </Col>
                 <Col>
-                    <Button>−</Button>
+                    <Button onClick={operacionHandler} value={'-'}>−</Button>
                 </Col>
                 <Col>
-                    <Button>×</Button>
+                    <Button onClick={operacionHandler} value={'x'}>×</Button>
                 </Col>
                 <Col>
-                    <Button>÷</Button>
+                    <Button onClick={operacionHandler} value={'/'}>÷</Button>
                 </Col>
             </Row>
         </Container>
