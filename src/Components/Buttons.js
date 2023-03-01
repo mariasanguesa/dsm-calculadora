@@ -14,11 +14,6 @@ const Buttons = (props) => {
     const operacionHandler = (event) => {
         props.operacion(event.target.value);
 
-        setActiveAdd(false);
-        setActiveSub(false);
-        setActiveMul(false);
-        setActiveDiv(false);
-
         if (event.target.value === '-') {
             setActiveSub(true);
         } else if (event.target.value === 'x') {
@@ -32,22 +27,28 @@ const Buttons = (props) => {
         }
     }
 
+    const onBlurHandler = () => {
+        setActiveAdd(false);
+        setActiveSub(false);
+        setActiveMul(false);
+        setActiveDiv(false);
+    }
 
     return (
         <Container>
             <hr></hr>
             <Row>
                 <Col>
-                    <Button onClick={operacionHandler} variant={`${activeAdd ? 'btn btn-outline-primary active':'btn btn-outline-primary'}`} value={'+'}>+</Button>
+                    <Button onBlur={onBlurHandler} onClick={operacionHandler} variant={`${activeAdd ? 'btn btn-outline-primary active':'btn btn-outline-primary'}`} value={'+'}>+</Button>
                 </Col>
                 <Col>
-                    <Button onClick={operacionHandler} variant={`${activeSub ? 'btn btn-outline-primary active':'btn btn-outline-primary'}`} value={'-'}>−</Button>
+                    <Button onBlur={onBlurHandler} onClick={operacionHandler} variant={`${activeSub ? 'btn btn-outline-primary active':'btn btn-outline-primary'}`} value={'-'}>−</Button>
                 </Col>
                 <Col>
-                    <Button onClick={operacionHandler} variant={`${activeMul ? 'btn btn-outline-primary active':'btn btn-outline-primary'}`} value={'x'}>×</Button>
+                    <Button onBlur={onBlurHandler} onClick={operacionHandler} variant={`${activeMul ? 'btn btn-outline-primary active':'btn btn-outline-primary'}`} value={'x'}>×</Button>
                 </Col>
                 <Col>
-                    <Button onClick={operacionHandler} variant={`${activeDiv ? 'btn btn-outline-primary active':'btn btn-outline-primary'}`} value={'/'}>÷</Button>
+                    <Button onBlur={onBlurHandler} onClick={operacionHandler} variant={`${activeDiv ? 'btn btn-outline-primary active':'btn btn-outline-primary'}`} value={'/'}>÷</Button>
                 </Col>
             </Row>
         </Container>
