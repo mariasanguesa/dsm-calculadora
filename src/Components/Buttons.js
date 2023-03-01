@@ -2,41 +2,33 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react';
+import {useState} from 'react';
 
 const Buttons = (props) => {
 
-    const [activeAdd, setActiveAdd] = useState("btn btn-outline-primary");
-    const [activeSub, setActiveSub] = useState("btn btn-outline-primary");
-    const [activeMul, setActiveMul] = useState("btn btn-outline-primary");
-    const [activeDiv, setActiveDiv] = useState("btn btn-outline-primary");
+    const [activeAdd, setActiveAdd] = useState(false);
+    const [activeSub, setActiveSub] = useState(false);
+    const [activeMul, setActiveMul] = useState(false);
+    const [activeDiv, setActiveDiv] = useState(false);
 
     const operacionHandler = (event) => {
         props.operacion(event.target.value);
 
-        if (event.target.value === '-') {
-            setActiveSub("btn btn-outline-primary active");
-            setActiveMul("btn btn-outline-primary");
-            setActiveAdd("btn btn-outline-primary");
-            setActiveDiv("btn btn-outline-primary");
+        setActiveAdd(false);
+        setActiveSub(false);
+        setActiveMul(false);
+        setActiveDiv(false);
 
+        if (event.target.value === '-') {
+            setActiveSub(true);
         } else if (event.target.value === 'x') {
-            setActiveMul("btn btn-outline-primary active");
-            setActiveSub("btn btn-outline-primary");
-            setActiveAdd("btn btn-outline-primary");
-            setActiveDiv("btn btn-outline-primary");
+            setActiveMul(true);
         }
         else if (event.target.value === '+') {
-            setActiveAdd("btn btn-outline-primary active");
-            setActiveSub("btn btn-outline-primary");
-            setActiveMul("btn btn-outline-primary");
-            setActiveDiv("btn btn-outline-primary");
+            setActiveAdd(true);
 
         } else if (event.target.value === '/') {
-            setActiveDiv("btn btn-outline-primary active");
-            setActiveSub("btn btn-outline-primary");
-            setActiveMul("btn btn-outline-primary");
-            setActiveAdd("btn btn-outline-primary");
+            setActiveDiv(true);
         }
     }
 
@@ -46,16 +38,16 @@ const Buttons = (props) => {
             <hr></hr>
             <Row>
                 <Col>
-                    <Button onClick={operacionHandler} variant={activeAdd} value={'+'}>+</Button>
+                    <Button onClick={operacionHandler} variant={`${activeAdd ? 'btn btn-outline-primary active':'btn btn-outline-primary'}`} value={'+'}>+</Button>
                 </Col>
                 <Col>
-                    <Button onClick={operacionHandler} variant={activeSub} value={'-'}>−</Button>
+                    <Button onClick={operacionHandler} variant={`${activeSub ? 'btn btn-outline-primary active':'btn btn-outline-primary'}`} value={'-'}>−</Button>
                 </Col>
                 <Col>
-                    <Button onClick={operacionHandler} variant={activeMul} value={'x'}>×</Button>
+                    <Button onClick={operacionHandler} variant={`${activeMul ? 'btn btn-outline-primary active':'btn btn-outline-primary'}`} value={'x'}>×</Button>
                 </Col>
                 <Col>
-                    <Button onClick={operacionHandler} variant={activeDiv} value={'/'}>÷</Button>
+                    <Button onClick={operacionHandler} variant={`${activeDiv ? 'btn btn-outline-primary active':'btn btn-outline-primary'}`} value={'/'}>÷</Button>
                 </Col>
             </Row>
         </Container>
